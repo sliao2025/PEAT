@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/themeprovider";
+import { useTheme } from "next-themes";
+import { DarkModeToggle } from "@/components/darkmodetoggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +26,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.className} overflow-y-scroll scroll-auto antialiased selection:bg-indigo-100 selection:text-indigo-700  bg-white `}
+        suppressHydrationWarning
       >
-        {children}
+        <div className="mx-auto max-w-screen-2xl">
+          {/* <Sidebar /> */}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <nav className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+              <aside className="flex grow flex-col gap-y-6 overflow-y-auto border-r border-gray-200 bg-gray-100 p-4 dark:border-gray-200 dark:bg-gray-750"></aside>
+            </nav>
+            <main className="lg:pl-72">{children}</main>
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );
