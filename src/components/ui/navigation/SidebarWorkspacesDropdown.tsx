@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   DropdownMenu,
@@ -8,39 +8,39 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/Dropdown"
-import { cx, focusInput } from "@/lib/utils"
-import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react"
-import React from "react"
-import { ModalAddWorkspace } from "./ModalAddWorkspace"
+} from "@/components/Dropdown";
+import { cx, focusInput } from "@/lib/utils";
+import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react";
+import React from "react";
+import { ModalAddWorkspace } from "./ModalAddWorkspace";
 
 const workspaces = [
   {
     value: "retail-analytics",
-    name: "Retail analytics",
-    initials: "RA",
-    role: "Member",
+    name: "Integrative Psych",
+    initials: "IP",
+    role: "Patient",
     color: "bg-indigo-600 dark:bg-indigo-500",
   },
   // Add more workspaces...
-]
+];
 
 export const WorkspacesDropdownDesktop = () => {
-  const [dropdownOpen, setDropdownOpen] = React.useState(false)
-  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
-  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
-  const focusRef = React.useRef<null | HTMLButtonElement>(null)
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [hasOpenDialog, setHasOpenDialog] = React.useState(false);
+  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null);
+  const focusRef = React.useRef<null | HTMLButtonElement>(null);
 
   const handleDialogItemSelect = () => {
-    focusRef.current = dropdownTriggerRef.current
-  }
+    focusRef.current = dropdownTriggerRef.current;
+  };
 
   const handleDialogItemOpenChange = (open: boolean) => {
-    setHasOpenDialog(open)
+    setHasOpenDialog(open);
     if (open === false) {
-      setDropdownOpen(false)
+      setDropdownOpen(false);
     }
-  }
+  };
   return (
     <>
       {/* sidebar (lg+) */}
@@ -53,11 +53,11 @@ export const WorkspacesDropdownDesktop = () => {
           <button
             className={cx(
               "flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 bg-white p-2 text-sm shadow-sm transition-all hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-950 hover:dark:bg-gray-900",
-              focusInput,
+              focusInput
             )}
           >
             <span
-              className="flex aspect-square size-8 items-center justify-center rounded bg-indigo-600 p-2 text-xs font-medium text-white dark:bg-indigo-500"
+              className="flex aspect-square size-8 items-center justify-center rounded bg-orange-400 p-2 text-xs font-medium text-white dark:bg-indigo-500"
               aria-hidden="true"
             >
               RA
@@ -65,7 +65,7 @@ export const WorkspacesDropdownDesktop = () => {
             <div className="flex w-full items-center justify-between gap-x-4 truncate">
               <div className="truncate">
                 <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
-                  Retail analytics
+                  Integrative Psych
                 </p>
                 <p className="whitespace-nowrap text-left text-xs text-gray-700 dark:text-gray-300">
                   Member
@@ -82,9 +82,9 @@ export const WorkspacesDropdownDesktop = () => {
           hidden={hasOpenDialog}
           onCloseAutoFocus={(event) => {
             if (focusRef.current) {
-              focusRef.current.focus()
-              focusRef.current = null
-              event.preventDefault()
+              focusRef.current.focus();
+              focusRef.current = null;
+              event.preventDefault();
             }
           }}
         >
@@ -98,7 +98,7 @@ export const WorkspacesDropdownDesktop = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex aspect-square size-8 items-center justify-center rounded p-2 text-xs font-medium text-white",
+                      "flex aspect-square size-8 items-center justify-center rounded p-2 text-xs font-medium text-white"
                     )}
                     aria-hidden="true"
                   >
@@ -125,25 +125,25 @@ export const WorkspacesDropdownDesktop = () => {
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  )
-}
+  );
+};
 
 export const WorkspacesDropdownMobile = () => {
-  const [dropdownOpen, setDropdownOpen] = React.useState(false)
-  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
-  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
-  const focusRef = React.useRef<null | HTMLButtonElement>(null)
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [hasOpenDialog, setHasOpenDialog] = React.useState(false);
+  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null);
+  const focusRef = React.useRef<null | HTMLButtonElement>(null);
 
   const handleDialogItemSelect = () => {
-    focusRef.current = dropdownTriggerRef.current
-  }
+    focusRef.current = dropdownTriggerRef.current;
+  };
 
   const handleDialogItemOpenChange = (open: boolean) => {
-    setHasOpenDialog(open)
+    setHasOpenDialog(open);
     if (open === false) {
-      setDropdownOpen(false)
+      setDropdownOpen(false);
     }
-  }
+  };
   return (
     <>
       {/* sidebar (xs-lg) */}
@@ -156,11 +156,11 @@ export const WorkspacesDropdownMobile = () => {
           <button className="flex items-center gap-x-1.5 rounded-md p-2 hover:bg-gray-100 focus:outline-none hover:dark:bg-gray-900">
             <span
               className={cx(
-                "flex aspect-square size-7 items-center justify-center rounded bg-indigo-600 p-2 text-xs font-medium text-white dark:bg-indigo-500",
+                "flex aspect-square size-7 items-center justify-center rounded bg-indigo-600 p-2 text-xs font-medium text-white dark:bg-indigo-500"
               )}
               aria-hidden="true"
             >
-              RA
+              IP
             </span>
             <RiArrowRightSLine
               className="size-4 shrink-0 text-gray-500"
@@ -168,7 +168,7 @@ export const WorkspacesDropdownMobile = () => {
             />
             <div className="flex w-full items-center justify-between gap-x-3 truncate">
               <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
-                Retail analytics
+                Integrative Psych
               </p>
               <RiExpandUpDownLine
                 className="size-4 shrink-0 text-gray-500"
@@ -182,9 +182,9 @@ export const WorkspacesDropdownMobile = () => {
           hidden={hasOpenDialog}
           onCloseAutoFocus={(event) => {
             if (focusRef.current) {
-              focusRef.current.focus()
-              focusRef.current = null
-              event.preventDefault()
+              focusRef.current.focus();
+              focusRef.current = null;
+              event.preventDefault();
             }
           }}
         >
@@ -198,7 +198,7 @@ export const WorkspacesDropdownMobile = () => {
                   <span
                     className={cx(
                       workspace.color,
-                      "flex size-8 items-center justify-center rounded p-2 text-xs font-medium text-white",
+                      "flex size-8 items-center justify-center rounded p-2 text-xs font-medium text-white"
                     )}
                     aria-hidden="true"
                   >
@@ -225,5 +225,5 @@ export const WorkspacesDropdownMobile = () => {
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  )
-}
+  );
+};

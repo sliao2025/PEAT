@@ -1,30 +1,30 @@
-"use client"
-import { siteConfig } from "@/app/siteConfig"
-import { cx, focusRing } from "@/lib/utils"
+"use client";
+import { siteConfig } from "@/app/siteConfig";
+import { cx, focusRing } from "@/lib/utils";
 import {
   RiHome2Line,
   RiLinkM,
   RiListCheck,
   RiSettings5Line,
-} from "@remixicon/react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import MobileSidebar from "./MobileSidebar"
+} from "@remixicon/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import MobileSidebar from "./MobileSidebar";
 import {
   WorkspacesDropdownDesktop,
   WorkspacesDropdownMobile,
-} from "./SidebarWorkspacesDropdown"
-import { UserProfileDesktop, UserProfileMobile } from "./UserProfile"
+} from "./SidebarWorkspacesDropdown";
+import { UserProfileDesktop, UserProfileMobile } from "./UserProfile";
 
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
-  { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
+  { name: "Visits", href: siteConfig.baseLinks.details, icon: RiListCheck },
   {
     name: "Settings",
     href: siteConfig.baseLinks.settings.general,
     icon: RiSettings5Line,
   },
-] as const
+] as const;
 
 const shortcuts = [
   {
@@ -47,16 +47,16 @@ const shortcuts = [
     href: "/overview#usage-overview",
     icon: RiLinkM,
   },
-] as const
+] as const;
 
 export function Sidebar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const isActive = (itemHref: string) => {
     if (itemHref === siteConfig.baseLinks.settings.general) {
-      return pathname.startsWith("/settings")
+      return pathname.startsWith("/settings");
     }
-    return pathname === itemHref || pathname.startsWith(itemHref)
-  }
+    return pathname === itemHref || pathname.startsWith(itemHref);
+  };
   return (
     <>
       {/* sidebar (lg+) */}
@@ -74,10 +74,10 @@ export function Sidebar() {
                     href={item.href}
                     className={cx(
                       isActive(item.href)
-                        ? "text-indigo-600 dark:text-indigo-400"
+                        ? "text-orange-600 dark:text-orange-400"
                         : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
                       "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-gray-100 hover:dark:bg-gray-900",
-                      focusRing,
+                      focusRing
                     )}
                   >
                     <item.icon className="size-4 shrink-0" aria-hidden="true" />
@@ -97,10 +97,10 @@ export function Sidebar() {
                       href={item.href}
                       className={cx(
                         pathname === item.href || pathname.startsWith(item.href)
-                          ? "text-indigo-600 dark:text-indigo-400"
+                          ? "text-orange-300 dark:text-orange-400"
                           : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
                         "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-gray-100 hover:dark:bg-gray-900",
-                        focusRing,
+                        focusRing
                       )}
                     >
                       <item.icon
@@ -128,5 +128,5 @@ export function Sidebar() {
         </div>
       </div>
     </>
-  )
+  );
 }

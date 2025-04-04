@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/themeprovider";
 import { useTheme } from "next-themes";
 import { DarkModeToggle } from "@/components/darkmodetoggle";
+import { Sidebar } from "@/components/ui/navigation/Sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,16 +33,13 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <div className="mx-auto max-w-screen-2xl">
-          {/* <Sidebar /> */}
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
-            <nav className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-              <aside className="flex grow flex-col gap-y-6 overflow-y-auto border-r border-gray-200 bg-gray-100 p-4 dark:border-gray-200 dark:bg-gray-750"></aside>
-            </nav>
+            <Sidebar />
             <main className="lg:pl-72">{children}</main>
           </ThemeProvider>
         </div>
